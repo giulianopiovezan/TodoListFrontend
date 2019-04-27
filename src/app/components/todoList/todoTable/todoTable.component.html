@@ -1,0 +1,31 @@
+<div class="table-todolist">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Título</th>
+                <th scope="col">Descrição</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let task of tasks | async as list">
+                <td [ngClass]="{'task-closed': task.status == 'CLOSED'}">{{task.title}}</td>
+                <td [ngClass]="{'task-closed': task.status == 'CLOSED'}">{{task.description}}</td>
+                <td class="actions" [ngClass]="{'disable-actions': action == 'update'}">
+                    <button class="btn btn-primary" *ngIf="task.status == 'OPEN'" (click)="close(task.id)">
+                        FECHAR
+                    </button>
+                    <button class="btn btn-success" *ngIf="task.status == 'CLOSED'" (click)="reopen(task.id)">
+                        ABRIR
+                    </button>
+                    <button class="btn btn-danger" (click)="remove(task.id)">
+                        REMOVER
+                    </button>
+                    <button class="btn btn-warning" (click)="edit(task)" *ngIf="task.status == 'OPEN'">
+                        ALTERAR
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

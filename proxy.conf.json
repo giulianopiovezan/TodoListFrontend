@@ -1,0 +1,11 @@
+{
+    "/api/v1/*": {
+      "target": "http://localhost:9001/todolist/api/v1",
+      "secure": false,
+      "logLevel": "debug",
+      "changeOrigin": true,
+      "pathRewrite": {
+          "^/api/v1" : ""
+      }
+    }
+  }

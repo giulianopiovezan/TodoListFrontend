@@ -1,0 +1,16 @@
+<div class="container-fluid todolist-container">
+    <section class="content-top">
+        <h1 class="todo-title">Todo List</h1>
+        <hr class="my-4">
+        <div class="alert alert-success" *ngIf="message != undefined">
+            {{message}}
+        </div>
+        <todo-form (onCreate)="create($event)" [task]="task" (onUpdate)="update($event)"></todo-form>
+    </section>
+
+    <section class="middle-content">
+        <todo-table [tasks]="tasks" (onClose)="close($event)" (onReopen)="reopen($event)" 
+                    (onRemove)="remove($event)" (onEdit)="edit($event)" [action]="action"></todo-table>
+    </section>
+</div>
+    
